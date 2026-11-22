@@ -9,6 +9,8 @@ idna==3.20
 Mako==1.4.3
 MarkupSafe==3.0.4
 opentelemetry-api==1.45.2
+psycopg==3.3.9
+psycopg-binary==3.3.9
 pydantic==2.14.4
 pydantic-settings==2.16.3
 pydantic_core==2.50.5
@@ -17,4 +19,5 @@ SQLAlchemy==2.1.9
 starlette==1.10.0
 typing-inspection==0.4.5
 typing_extensions==4.16.0
+tzdata==2026.6
 uvicorn==0.54.0
