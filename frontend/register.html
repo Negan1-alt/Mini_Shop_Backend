@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Register – Pagebound</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="top" id="top"></header>
+<main class="authbox">
+  <h1>Register</h1>
+  <form id="form" data-mode="register">
+    <label for="email">Email</label><input class="field" id="email" name="email" type="email" required autocomplete="email">
+    <label for="password">Password</label><input class="field" id="password" name="password" type="password" required minlength="8" autocomplete="new-password">
+    <p id="msg" role="alert"></p>
+    <button class="checkout" type="submit">Register</button>
+  </form>
+  <p class="meta">Already registered? <a href="login.html">Log in</a></p>
+</main>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/auth.js"></script>
+</body></html>

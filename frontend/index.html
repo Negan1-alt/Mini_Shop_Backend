@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pagebound</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="top" id="top"></header>
+<div class="wrap">
+  <aside>
+    <h2>Sort by</h2>
+    <select id="sort" class="field" aria-label="Sort products"><option value="">Default</option><option value="name">Name A–Z</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+    <h2>Categories</h2><div class="cats" id="cats"></div>
+  </aside>
+  <main><h1 class="title">Products <span id="n"></span></h1><div class="grid" id="grid" aria-live="polite"></div></main>
+</div>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/index.js"></script>
+</body></html>

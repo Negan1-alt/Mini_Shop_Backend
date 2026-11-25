@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Log in – Pagebound</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="top" id="top"></header>
+<main class="authbox">
+  <h1>Log in</h1>
+  <form id="form" data-mode="login">
+    <label for="email">Email</label><input class="field" id="email" name="email" type="email" required autocomplete="email">
+    <label for="password">Password</label><input class="field" id="password" name="password" type="password" required minlength="1" autocomplete="current-password">
+    <p id="msg" role="alert"></p>
+    <button class="checkout" type="submit">Log in</button>
+  </form>
+  <p class="meta">No account? <a href="register.html">Create one</a></p>
+</main>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/auth.js"></script>
+</body></html>
