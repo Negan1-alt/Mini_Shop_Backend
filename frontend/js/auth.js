@@ -6,6 +6,6 @@ f.onsubmit = async e => {
   const email = f.email.value.trim(), body = JSON.stringify({ email, password: f.password.value });
   try {
     if (reg) { await api("/register", { method: "POST", body }); location.href = "login.html?registered=1"; }
-    else { const r = await api("/login", { method: "POST", body }); setUser({ user_id: r.user_id, email: email.toLowerCase() }); location.href = "index.html"; }
+    else { const r = await api("/login", { method: "POST", body }); setUser({ token: r.access_token, role: r.role, email: email.toLowerCase() }); location.href = "index.html"; }
   } catch (err) { msg.textContent = err.message; }
 };

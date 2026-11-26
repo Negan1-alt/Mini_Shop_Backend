@@ -8,16 +8,26 @@ const setUser = u => localStorage.setItem("user", JSON.stringify(u));
 const logout = () => { localStorage.removeItem("user"); location.href = "index.html"; };
 
 // ---- cart (stored in the browser until the backend has an /orders endpoint) ----
-const cartKey = () => "cart_" + (getUser()?.user_id || "guest");
+const cartKey = () => "cart_" + (getUser()?.email || "guest");
 const getCart = () => { try { return JSON.parse(localStorage.getItem(cartKey())) || {}; } catch { return {}; } };
 const saveCart = c => localStorage.setItem(cartKey(), JSON.stringify(c));
 
 // ---- API helper: turns FastAPI errors ({"detail": ...}) into readable messages ----
 async function api(path, opts = {}) {
+  const token = getUser()?.token;
   let res;
-  try { res = await fetch(API + path, { headers: { "Content-Type": "application/json" }, ...opts }); }
-  catch { throw new Error("Can't reach the server. Is FastAPI running at " + API + " and is CORS enabled?"); }
+  try {
+    res = await fetch(API + path, {
+      ...opts,
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: "Bearer " + token }),
+        ...opts.headers,
+      },
+    });
+  } catch { throw new Error("Can't reach the server. Is FastAPI running at " + API + " and is CORS enabled?"); }
   const data = await res.json().catch(() => ({}));
+  if (res.status === 401 && token) logout();   // token expired or invalid
   if (!res.ok) {
     const d = data.detail;
     throw new Error(typeof d === "string" ? d : Array.isArray(d) ? d.map(x => x.msg).join(", ") : "Request failed (" + res.status + ")");
