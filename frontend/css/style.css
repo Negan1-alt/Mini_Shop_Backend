@@ -50,3 +50,5 @@ aside h2{font-family:var(--head);font-size:1rem;margin:0 0 10px}
 .cats{flex-direction:row;overflow-x:auto;padding-bottom:6px}.cat{white-space:nowrap;gap:8px}
 .top{flex-wrap:wrap;padding:12px 16px}.search{order:5;max-width:none;flex-basis:100%}.who{display:none}}
 @media (prefers-reduced-motion:reduce){.drawer{transition:none}}
+.check{display:flex;gap:8px;align-items:center}
+.add:disabled{opacity:.5;cursor:not-allowed}
