@@ -48,7 +48,7 @@ class ProductService:
     def __init__(self, products: ProductRepository):
         self.products = products
 
-    def list_products(self, search, limit):
+    def list_products(self, search = None, limit = 50):
         return self.products.list(search, limit)
 
     def get(self, product_id):
@@ -66,6 +66,12 @@ class ProductService:
             raise ProductNotFound("Product Not Found")
         for key, value in data.model_dump(exclude_unset=True).items(): # if exclude_unset is False then will return {name:None, price:150 , category:None}
             setattr(product, key, value) # product.key = value ///// product.price = 500
+        return self.products.save(product)
+
+    def replace(self, product_id, data):
+        product = self.get(product_id)
+        for key, value in data.model_dump().items():
+            setattr(product, key, value)
         return self.products.save(product)
 
     def delete(self, product_id):

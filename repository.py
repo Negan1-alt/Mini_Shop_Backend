@@ -18,11 +18,11 @@ class ProductRepository:
     def __init__(self, db):
         self.db = db
 
-    def list(self, search = None):
+    def list(self, search = None, limit = 50):
         query = self.db.query(Product)
         if search:
             query = query.filter(Product.name.ilike(f"%{search}%"))
-        return query.order_by(Product.id)
+        return query.order_by(Product.id).limit(limit).all()
 
     def get(self, product_id:int):
         return self.db.get(Product, product_id)
